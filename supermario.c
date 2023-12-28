@@ -14,6 +14,16 @@ int hasLuigi = 0;
 int missionCompleted = 0;
 int gameOver = 0;
 
+
+enum Weapon {
+    NO_WEAPON = 0,
+    FIREBALLS = 1,
+    AK_47 = 2,
+    ROCKETS = 3,
+    REVOLVER = 4
+};
+
+
 // Added variables for weapons
 int selectedWeapon = 0;  // 0: No weapon, 1: Fireballs, 2: AK-47, 3: Rockets, 4: Revolver
 
@@ -298,10 +308,43 @@ void spawnBeesAndWasps() {
     level[waspsRow][waspsCol] = 'W';  // Wasps
 }
 
+void spawnMike() {
+    int mikeRow, mikeCol;
+
+    do {
+        mikeRow = rand() % ROWS;
+        mikeCol = rand() % COLS;
+    } while (level[mikeRow][mikeCol] != ' ');
+
+    level[mikeRow][mikeCol] = 'M';  // Assuming 'M' represents Mike
+}
+
+void spawnAnt() {
+    int antRow, antCol;
+
+    do {
+        antRow = rand() % ROWS;
+        antCol = rand() % COLS;
+    } while (level[antRow][antCol] != ' ');
+
+    level[antRow][antCol] = 'A';  // Assuming 'A' represents an Ant
+}
+
+void spawnGiganticAnt() {
+    int giganticAntRow, giganticAntCol;
+
+    do {
+        giganticAntRow = rand() % ROWS;
+        giganticAntCol = rand() % COLS;
+    } while (level[giganticAntRow][giganticAntCol] != ' ');
+
+    level[giganticAntRow][giganticAntCol] = 'G';  // Assuming 'G' represents a Gigantic Ant
+}
+
 // Function to handle the inventory
 void handleInventory() {
     char inventoryInput;
-    
+
     do {
         printf("\nInventory Options:\n");
         printf("1. Fireballs\n");
@@ -314,19 +357,19 @@ void handleInventory() {
 
         switch (inventoryInput) {
             case '1':
-                selectedWeapon = 1;
+                selectedWeapon = FIREBALLS;
                 printf("You've selected Fireballs!\n");
                 break;
             case '2':
-                selectedWeapon = 2;
+                selectedWeapon = AK_47;
                 printf("You've selected AK-47!\n");
                 break;
             case '3':
-                selectedWeapon = 3;
+                selectedWeapon = ROCKETS;
                 printf("You've selected Rockets!\n");
                 break;
             case '4':
-                selectedWeapon = 4;
+                selectedWeapon = REVOLVER;
                 printf("You've selected Revolver!\n");
                 break;
             case '0':
@@ -661,4 +704,3 @@ printf("Congratulations! You've encountered and survived the Queen of Wermaanshu
 
     return 0;
 }
-
