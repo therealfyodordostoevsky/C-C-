@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
 //Typedef: a keyword which helps ordering huge datasets.
 typedef std::vector<std::pair<std::string, int>> pairlist_t;
-
+typedef std::string string_t;
+using int = number_t;
 //Creating namespaces
 namespace First 
 {
@@ -17,8 +19,9 @@ namespace Second
 
 int main()
 {
+    //Using functions allows us to include namespaces.
     using namespace First;
-    pairlist_t pairlist;
+    /*Declaring the typedef as a vaiable*/ pairlist_t pairlist;
 
     /*
     int x; //Declaration
@@ -50,7 +53,7 @@ int main()
         bool genauth = false;
         //5. String (An object demostrating a sequence of text)
         std::string name = "Jonathan"; 
-        std::string city = "New York"; 
+        /*Typedef*/ string_t city = "New York"; 
         std::string country = "Italy"; 
 
         //6. Calculating a circle's area and circumference:
